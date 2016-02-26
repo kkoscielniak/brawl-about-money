@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
-    autoIncrement = require('mongoose-auto-increment');
+    autoIncrement = require('mongoose-auto-increment'),
+    config = require('../config/config');
 
 var Schema = mongoose.Schema;
 
@@ -17,6 +18,10 @@ questionSchema.set('toJSON', {
    virtuals: true
 });
 
-var Question = mongoose.model('Question', questionSchema);
+var connection = mongoose.createConnection(config.mongoDBUrl);
+autoIncrement.initialize(connection);
+
+questionSchema.plugin(autoIncrement.plugin, { model: 'Question', field: 'questionId' });
+var Question = connection.model('Question', questionSchema);
 
 module.exports = Question;

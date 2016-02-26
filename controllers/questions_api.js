@@ -1,5 +1,6 @@
 var express = require('express'),
-    api = express.Router();
+    api = express.Router(),
+    random = require('../helpers/random');
 
 var questionModel = require('../models/question');
 
@@ -15,7 +16,6 @@ api.use(function(req, res, next) {
  * Returns one question from the questions pool
  */
 api.get('/get', function(req, res){
-
     var count;
 
     questionModel.count(function(err, c) {
@@ -26,24 +26,32 @@ api.get('/get', function(req, res){
         } else {
             count = c;
             console.log('Current question pool: %d', count);
+
+            if (count > 0) {
+                questionModel.find({ 'questionId': random.intExclusive(0, count) } , function(err, question){
+                    if (err) {
+                        res.send(err);
+                    }
+
+                    res.json(question);
+                });
+            } else {
+                res.json({
+                    message: 'No questions in current pool!'
+                });
+            }
         }
     });
-
-    if (count > 0) {
-
-    } else {
-        res.json({
-            message: 'No questions in current pool!'
-        })
-    }
-
-
 });
 
 api.post('/add', function(req, res) {
 
+    console.log(req.body);
+
     var question = new questionModel();
         question.question = req.body.question;
+        question.category = req.body.category;
+        question.answers = req.body.answers;
 
         question.save(function(err){
             if (err) {
