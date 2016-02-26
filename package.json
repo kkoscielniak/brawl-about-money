@@ -2,10 +2,16 @@
   "name": "brawl-about-money",
   "version": "0.0.1",
   "description": "socket.io version of popular polish TV quiz contest ",
+  "repository": "https://github.com/kkoscielniak/brawl-about-money",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Krystian Kościelniak",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.4",
+    "mongoose": "^4.4.5",
+    "mongoose-auto-increment": "^5.0.1"
+  }
 }
