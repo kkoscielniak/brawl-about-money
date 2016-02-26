@@ -1,0 +1,11 @@
+{
+  "name": "brawl-about-money",
+  "version": "0.0.1",
+  "description": "socket.io version of popular polish TV quiz contest ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Krystian Kościelniak",
+  "license": "ISC"
+}
