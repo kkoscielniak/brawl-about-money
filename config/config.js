@@ -1,5 +1,5 @@
 var config = {
-    mongoDBUrl: 'mongodb://localhost:27017/brawl'
+    mongoDBUrl: process.env.MONGODB_URL || 'mongodb://localhost:27017/brawl'
 }
 
 module.exports = config;
