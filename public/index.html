@@ -1,16 +1,6 @@
-<html>
+<html ng-app="brawl">
     <head>
-        <title>Socket.IO chat</title>
-        <style>
-            * { margin: 0; padding: 0; box-sizing: border-box; }
-            body { font: 13px Helvetica, Arial; }
-            form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-            form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-            form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-            #messages { list-style-type: none; margin: 0; padding: 0; }
-            #messages li { padding: 5px 10px; }
-            #messages li:nth-child(odd) { background: #eee; }
-        </style>
+        <title>Brawl About Money</title>
         <link rel="stylesheet" href="/assets/bower/bootstrap/dist/css/bootstrap.min.css">
     </head>
     <body>
@@ -31,22 +21,50 @@
             </div>
         </div>
 
-        <ul id="rooms">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Brawl about money</a>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><p class="navbar-text">{{ username }}</p></li>
+                </ul>
+            </div>
+        </nav>
 
-        </ul>
 
 
-        <ul id="messages"></ul>
-        <form action="">
-            <input id="m" autocomplete="off" /><button>Send</button>
-        </form>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4" ng-controller="usersController">
+                    <h2>Users:</h2>
+
+                    <table class="js-users-table table table-striped">
+                        <tr>
+                            <th colspan="1">Username</th>
+                            <th colspan="1">Points</th>
+                        </tr>
+                        <tr ng-repeat="user in users">
+                            <td>{{ user.name }}</td>
+                            <td>{{ user.points }}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-4">
+                    <h2>Rooms:</h2>
+                </div>
+            </div>
+        </div>
+
+
+
+
         <script src="/assets/bower/jquery/dist/jquery.min.js"></script>
         <script src="/assets/bower/socket.io-client/socket.io.js"></script>
         <script src="/assets/bower/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="/assets/bower/angular/angular.min.js"></script>
         <script src="/assets/js/client.js"></script>
-
-        <script>
-          
-        </script>
     </body>
 </html>

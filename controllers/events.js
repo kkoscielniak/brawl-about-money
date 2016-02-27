@@ -35,9 +35,6 @@ exports = module.exports = function (io) {
             clients.push(client);
         });
 
-
-
-
         client.on('createRoom', function(name) {
             if (people[client.id].room === null) {
                 var uniqueId = uuid.v4();
