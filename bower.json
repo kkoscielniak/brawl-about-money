@@ -1,0 +1,24 @@
+{
+  "name": "brawl-about-money",
+  "description": "socket.io version of popular polish TV quiz contest",
+  "main": "app.js",
+  "authors": [
+    "Krystian Kościelniak"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/kkoscielniak/brawl-about-money",
+  "moduleType": [
+    "node"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "socket.io-client": "~1.4.5"
+  }
+}

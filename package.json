@@ -5,14 +5,17 @@
   "repository": "https://github.com/kkoscielniak/brawl-about-money",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "./node_modules/bower/bin/bower install"
   },
   "author": "Krystian Kościelniak",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.0",
+    "bower": "^1.7.7",
     "express": "^4.13.4",
     "mongoose": "^4.4.5",
-    "mongoose-auto-increment": "^5.0.1"
+    "mongoose-auto-increment": "^5.0.1",
+    "socket.io": "^1.4.5"
   }
 }
