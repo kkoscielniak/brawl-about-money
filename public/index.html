@@ -5,21 +5,18 @@
     </head>
     <body>
 
-        <div id="login-modal" class="js-login-modal modal fade" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">What's your name?</h4>
+        <div ng-controller="loginController">
+            <modal title="What's your name?" visible="showModal">
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" ng-model="newUsername"/>
                     </div>
-                    <div class="modal-body">
-                        <input type="text" class="js-username form-control">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="js-join btn btn-primary">Join</button>
-                    </div>
-                </div>
-            </div>
+                    <button type="submit" class="btn btn-primary" ng-click="join(newUsername)">Join</button>
+                </form>
+            </modal>
         </div>
+
+
 
         <nav class="navbar navbar-default">
             <div class="container-fluid">
@@ -38,25 +35,53 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-md-4" ng-controller="usersController">
-                    <h2>Users:</h2>
+                <div ng-controller="usersController">
+                    <div class="col-md-4">
+                        <h2>Users:</h2>
 
-                    <table class="js-users-table table table-striped">
-                        <tr>
-                            <th colspan="1">Username</th>
-                            <th colspan="1">Points</th>
-                        </tr>
-                        <tr ng-repeat="user in users">
-                            <td>{{ user.name }}</td>
-                            <td>{{ user.points }}</td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="col-md-4">
-                    <h2>Rooms:</h2>
+                        <table class="table table-striped">
+                            <tr>
+                                <th colspan="1">Username</th>
+                                <th colspan="1">Points</th>
+                            </tr>
+                            <tr ng-repeat="user in users">
+                                <td>{{ user.name }}</td>
+                                <td>{{ user.points }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-4">
+                        <h2>Rooms:</h2>
+                        <table class="table table-striped">
+                            <tr>
+                                <th colspan="1">Room name</th>
+                                <th colspan="1">Users count</th>
+                            </tr>
+                            <tr ng-repeat="room in rooms">
+                                <td>{{ room.name }}</td>
+                                <td>{{ room.points }}</td>
+                            </tr>
+                        </table>
+
+                        <button class="btn btn-default" type="submit" value="Add" ng-click="toggleModal()">Create room</button>
+                    </div>
+
+
+                    <modal title="Add new room:" visible="showModal">
+                        <form role="form">
+                            <div class="form-group">
+                                <label for="text">Room name</label>
+                                <input type="text" class="form-control" ng-model="newRoomName"/>
+                            </div>
+                            <button type="submit" class="btn btn-primary" ng-click="createRoom(newRoomName)">Create</button>
+                        </form>
+                    </modal>
                 </div>
             </div>
         </div>
+
+
+
 
 
 
