@@ -25,10 +25,7 @@ var server = app.listen(port);
  * Socket.io configuration
  */
 var io = require('socket.io').listen(server);
-
-io.on('connection', function(socket){
-    console.log('a user connected.');
-});
+var events = require('./controllers/events')(io);
 
 /*
  * APIs routings
