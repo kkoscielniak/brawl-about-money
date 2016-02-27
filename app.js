@@ -19,9 +19,29 @@ mongoose.connect(config.mongoDBUrl);
 var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+var server = app.listen(port);
 
-var api = require('./controllers/questions_api.js');
-app.use('/api/questions', api);
+/*
+ * Socket.io configuration
+ */
+var io = require('socket.io').listen(server);
 
-app.listen(port);
+io.on('connection', function(socket){
+    console.log('a user connected.');
+});
+
+/*
+ * APIs routings
+ */
+var questionsApi = require('./controllers/questions_api');
+app.use('/api/questions', questionsApi);
+
+/*
+ * Front-ends routing
+ */
+app.use(express.static('public'));
+var router = require('./controllers/router');
+app.use('/', router);
+
+
 console.log('magic happens!');
