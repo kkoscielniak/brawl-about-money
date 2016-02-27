@@ -11,26 +11,42 @@
             #messages li { padding: 5px 10px; }
             #messages li:nth-child(odd) { background: #eee; }
         </style>
+        <link rel="stylesheet" href="/assets/bower/bootstrap/dist/css/bootstrap.min.css">
     </head>
     <body>
+
+        <div id="login-modal" class="js-login-modal modal fade" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">What's your name?</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" class="js-username form-control">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="js-join btn btn-primary">Join</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <ul id="rooms">
+
+        </ul>
+
+
         <ul id="messages"></ul>
         <form action="">
             <input id="m" autocomplete="off" /><button>Send</button>
         </form>
         <script src="/assets/bower/jquery/dist/jquery.min.js"></script>
         <script src="/assets/bower/socket.io-client/socket.io.js"></script>
+        <script src="/assets/bower/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="/assets/js/client.js"></script>
+
         <script>
-          var socket = io();
-
-          $('form').submit(function(){
-            socket.emit('chat message', $('#m').val());
-            $('#m').val('');
-            return false;
-          });
-
-          socket.on('chat message', function(msg){
-            $('#messages').append($('<li>').text(msg));
-          });
+          
         </script>
     </body>
 </html>

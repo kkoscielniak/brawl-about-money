@@ -16,6 +16,7 @@
     "express": "^4.13.4",
     "mongoose": "^4.4.5",
     "mongoose-auto-increment": "^5.0.1",
+    "node-uuid": "^1.4.7",
     "socket.io": "^1.4.5"
   }
 }
